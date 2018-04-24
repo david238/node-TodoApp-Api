@@ -35,31 +35,31 @@ app.get('/todos', (req, res) => {
   });
 });
 
-app.post('/resume', (req, res) => {
-  var resume = new Resume({
-    Name: req.body.name,
-    Address: req.body.address,
-    PostalCode: req.body.postalcode,
-    Country: req.body.country,
-    Mobile: req.body.mobile,
-    Email: req.body.email,
-    Linkedin: req.body.linkedin,
-    Github: req.body.github,
-    Languages: req.body.languages,
-    Summary: req.body.summary,
-    Skills: req.body.skills,
-    Employment: req.body.employment,
-    Education: req.body.education,
-    Certificates: req.body.certificates,
-    Extracurriculum: req.body.extracurriculum
-  });
-  resume.save().then((docs) => {
-  res.send(docs);
-}, (err) => {
-    res.status(400).send(err);
-  });
-
-});
+// app.post('/resume', (req, res) => {
+//   var resume = new Resume({
+//     Name: req.body.name,
+//     Address: req.body.address,
+//     PostalCode: req.body.postalcode,
+//     Country: req.body.country,
+//     Mobile: req.body.mobile,
+//     Email: req.body.email,
+//     Linkedin: req.body.linkedin,
+//     Github: req.body.github,
+//     Languages: req.body.languages,
+//     Summary: req.body.summary,
+//     Skills: req.body.skills,
+//     Employment: req.body.employment,
+//     Education: req.body.education,
+//     Certificates: req.body.certificates,
+//     Extracurriculum: req.body.extracurriculum
+//   });
+//   resume.save().then((docs) => {
+//   res.send(docs);
+// }, (err) => {
+//     res.status(400).send(err);
+//   });
+//
+// });
 
 
 app.get('/resume', (req, res) => {
