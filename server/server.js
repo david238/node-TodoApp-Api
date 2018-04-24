@@ -6,8 +6,8 @@ var {mongoose} = require('./db/mongoose');
 
 //import models
 var {Todo} = require('./models/todo');
-var {User} = require('./models/user');
-var {ResumeModel} = require('./models/resume');
+//var {User} = require('./models/user');
+//var {ResumeModel} = require('./models/resume');
 
 var app = express();
 const port = process.env.PORT || 3000;
