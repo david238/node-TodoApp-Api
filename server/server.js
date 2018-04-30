@@ -1,3 +1,4 @@
+const _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -6,7 +7,7 @@ var {mongoose} = require('./db/mongoose');
 
 //import models
 var {Todo} = require('./models/todo');
-//var {User} = require('./models/user');
+var {User} = require('./models/user');
 var {Resume} = require('./models/resume');
 
 var app = express();
@@ -70,6 +71,20 @@ app.get('/resume', (req, res) => {
   });
 });
 
+
+//POST /users
+app.post('/users', (req, res) => {
+  var body = _.pick(req.body, ['email', 'password']);
+  var user = new User(body);
+
+  user.save().then(() => {
+    return user.generateAuthToken();
+  }).then((token) => {
+    res.header('x-auth', token).send(user);
+  }).catch((err) => {
+    res.status(400).send(err);
+  })
+});
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
