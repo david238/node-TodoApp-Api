@@ -32,12 +32,15 @@ var UserSchema = new mongoose.Schema({
   }]
 });
 
+//overwrite return methods, regular function, determine what value are sent
+//back when data is converted into a JSON value.
 UserSchema.methods.toJSON = function () {
     var user = this;
     var userObject = user.toObject();
-    return _.pick(userObject, ['_id', 'email']);
+    return _.pick(userObject, ['_id', 'email','tokens']);
 };
 
+//instance method
 UserSchema.methods.generateAuthToken = function() {
   var user = this;
   var access = 'auth';
