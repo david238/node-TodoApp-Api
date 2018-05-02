@@ -16,6 +16,10 @@ var Todo = mongoose.model('Todo', {
   },
   schedule: {
     type: String
+  },
+  _creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    required:true
   }
 });
 
