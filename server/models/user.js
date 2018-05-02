@@ -38,7 +38,7 @@ var UserSchema = new mongoose.Schema({
 UserSchema.methods.toJSON = function () {
     var user = this;
     var userObject = user.toObject();
-    return _.pick(userObject, ['_id', 'email','tokens']);
+    return _.pick(userObject, ['_id', 'email']);
 };
 
 //instance method
@@ -78,8 +78,7 @@ UserSchema.statics.findByToken = function (token) {
 //model methods by findByCredentials
 UserSchema.statics.findByCredentials = function(email, password) {
         var User = this;
-
-        User.findOne({email}).then((user) => {
+        return User.findOne({email}).then((user) => {
           if (!user){
               return Promise.reject();
           }
